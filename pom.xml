@@ -4,17 +4,13 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.tangshengbo</groupId>
+    <groupId>com.wangxuebing</groupId>
     <artifactId>myproject</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
-    <!--<modules>-->
-        <!--<module>myproject-web</module>-->
-        <!--<module>myproject-service</module>-->
-        <!--<module>myproject-interface</module>-->
-        <!--<module>myproject-mq</module>-->
-        <!--<module>myproject-example</module>-->
-    <!--</modules>-->
+    <modules>
+        <module>myproject-sexample</module>
+    </modules>
     <properties>
         <spring-version>4.1.6.RELEASE</spring-version>
         <spring-security-version>3.2.2.RELEASE</spring-security-version>
