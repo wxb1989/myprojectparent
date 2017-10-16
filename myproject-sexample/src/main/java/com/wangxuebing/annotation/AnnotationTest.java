@@ -5,6 +5,9 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
 
+/**
+ * @author Administrator
+ */
 public class AnnotationTest implements Serializable {
 
     private static final long serialVersionUID = -3210031379297872082L;
