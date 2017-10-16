@@ -4,6 +4,7 @@ import java.util.*;
 
 /**
  * @author Administrator
+ * 随机方式处理
  */
 public class Random {
     public static String  getServer() {
@@ -25,6 +26,5 @@ public class Random {
 
     public static void main(String[] args) {
         System.out.println(getServer());
-
     }
 }
