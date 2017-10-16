@@ -4,6 +4,7 @@ import java.util.*;
 
 /**
  * @author Administrator
+ * 随机法
  */
 public class Random {
     public static String  getServer() {
