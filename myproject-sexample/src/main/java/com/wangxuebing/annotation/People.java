@@ -1,6 +1,9 @@
 package com.wangxuebing.annotation;
 
 
+/**
+ * @author Administrator
+ */
 @Description(name={"trang","wang","bing"},age = 29,kind = PeopleKind.WHITE)
 public class People {
 
