@@ -36,7 +36,7 @@ public class SumTest implements Serializable {
         y ^= x;
         x ^= y;
 
-        System.out.println(x +"  "  + y);
+        System.out.println(1 << 29);
 
         /*
             取模运算，采用位运算实现：
