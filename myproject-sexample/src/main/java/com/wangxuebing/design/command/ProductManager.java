@@ -6,7 +6,7 @@ import java.util.List;
 
 /**
  * @author ${Administrator}
- * @description 处理类
+ * @description 下达命令的类
  * @create 2017-10-23 16:32
  **/
 public class ProductManager  {
