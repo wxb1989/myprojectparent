@@ -9,9 +9,6 @@ public class ConcreteBuilder implements Builder {
 
     Product product;
 
-
-
-
     @Override
     public void setA(String a) {
 
