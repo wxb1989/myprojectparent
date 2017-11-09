@@ -2,7 +2,7 @@ package com.wangxuebing.thread.atomic;
 
 /**
  * @author ${Administrator}
- * @description ${DESCRIPTION}
+ * @description 关于atomic的使用还存在一些问题
  * @create 2017-11-09 16:02
  **/
 public class TheardAtomicTest {
