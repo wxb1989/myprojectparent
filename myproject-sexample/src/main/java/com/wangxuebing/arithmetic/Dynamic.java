@@ -2,7 +2,7 @@ package com.wangxuebing.arithmetic;
 
 /**
  * @author ${Administrator}
- * @description ${DESCRIPTION}
+ * @description ${DESCRIPTION} 动态规划小例子
  * @create 2017-11-13 16:36
  **/
 public class Dynamic {
