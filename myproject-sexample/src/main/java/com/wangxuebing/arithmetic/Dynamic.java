@@ -5,7 +5,7 @@ package com.wangxuebing.arithmetic;
  * @description ${DESCRIPTION}
  * @create 2017-11-13 16:36
  **/
-public class Solution {
+public class Dynamic {
     public static int rob(int[] nums) {
         if (nums.length == 0) {
             return 0;
