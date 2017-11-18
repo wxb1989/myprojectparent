@@ -12,6 +12,7 @@ public class VolatileTest  {
 
     public static void increase() {
         race++;
+
     }
 
     public static void main(String[] args) {
