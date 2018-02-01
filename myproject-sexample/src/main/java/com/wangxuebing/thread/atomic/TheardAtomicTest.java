@@ -20,7 +20,6 @@ public class TheardAtomicTest {
             Thread.sleep(1000);
             System.out.println("Thread sleep ");
 
-
         } catch (InterruptedException e) {
             e.printStackTrace();
         }finally {

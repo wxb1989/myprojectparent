@@ -11,12 +11,16 @@ public class VolatileTest  {
     public static volatile int race = 0;
 
     public static void increase() {
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         race++;
-
     }
 
     public static void main(String[] args) {
-        Thread[] threads = new Thread[THREAD_COUNT];
+        Thread[] threads = new Thread[100];
         for (Thread thread : threads) {
             thread = new Thread(new Runnable() {
                 @Override
@@ -27,6 +31,10 @@ public class VolatileTest  {
                 }
             });
             thread.start();
+        }
+
+        while (Thread.activeCount()>1){
+            Thread.yield();
         }
         System.out.println(race);
     }
