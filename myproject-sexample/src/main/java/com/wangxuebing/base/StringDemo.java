@@ -38,7 +38,6 @@ public class StringDemo {
 
 */
 
-
     /**
      *
       ◇ public int length() 此方法返回字符串的字符个数
