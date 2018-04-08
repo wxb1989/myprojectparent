@@ -11,7 +11,7 @@ public class DoubleBallTest {
 
     public static void main(String[] args) {
         List<String> list =new ArrayList<>();
-        for (int j = 0; j < 1000 ; j++) {
+        for (int j = 0; j < 5000 ; j++) {
             int[] red = new int[7];
             int blue = 0;
             for (int i = 0; i < 7; i = i + 1) {
