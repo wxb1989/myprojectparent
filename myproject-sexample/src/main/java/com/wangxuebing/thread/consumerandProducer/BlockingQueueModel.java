@@ -29,6 +29,7 @@ public class BlockingQueueModel implements Model {
         return new ProducerImpl();
     }
 
+
     public static void main(String[] args) {
         Model model = new BlockingQueueModel(3);
         for (int i = 0; i < 2; i++) {
