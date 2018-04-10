@@ -4,7 +4,7 @@ import java.util.*;
 
 /**
  * @author ${Administrator}
- * @description ${DESCRIPTION}
+ * @description ${DESCRIPTION} 双色球随机类
  * @create 2018-04-04 16:10
  **/
 public class DoubleBallTest {
