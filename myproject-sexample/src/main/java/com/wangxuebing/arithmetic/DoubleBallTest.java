@@ -10,8 +10,9 @@ import java.util.*;
 public class DoubleBallTest {
 
     public static void main(String[] args) {
+        long stattime =System.currentTimeMillis();
         List<String> list =new ArrayList<>();
-        for (int j = 0; j < 5000 ; j++) {
+        for (int j = 0; j < 25000 ; j++) {
             int[] red = new int[7];
             int blue = 0;
             for (int i = 0; i < 7; i = i + 1) {
@@ -47,6 +48,10 @@ public class DoubleBallTest {
             list.add( blue+"");
         }
         count(list);
+
+        long end =System.currentTimeMillis();
+
+        System.out.println("消耗时间： "+ (end - stattime));
 
     }
 
