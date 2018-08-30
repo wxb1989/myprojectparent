@@ -12,6 +12,8 @@ import java.util.concurrent.*;
 public class springThreadPool {
 
     public static void main(String[] args) {
+        final long waitTime = 8 * 1000;
+        final long awaitTime = 60 * 1000;
 
         //spring的创建线程池方式
         ThreadPoolTaskExecutor taskExecutor = new ThreadPoolTaskExecutor();
@@ -35,10 +37,11 @@ public class springThreadPool {
         taskExecutor.setRejectedExecutionHandler(new ThreadPoolExecutor.CallerRunsPolicy());
 
 
-        //submit是带返回值的执行线程，而execute则是无返回值
+        //submit是带返回值的执行线程，而execute则是无返回值，而且execute如果有运行错误会抛出异常，
+        // 但是submit不用返回值去接收 则不会抛出异常
         for (int i = 0; i < 10; i++){
             int index = i;
-            taskExecutor.submit(()->{
+            taskExecutor.execute(()->{
                 System.out.println("i:" + index + " taskExecutor");
             });
         }
@@ -54,9 +57,25 @@ public class springThreadPool {
 
         for (int i = 0; i < 10; i++) {
             int index = i;
-            executorService.submit(() -> System.out.println("i:" + index + " executorService"));
+            executorService.execute(() -> System.out.println("i:" + index + " executorService"));
         }
-        executorService.shutdown();
+
+        try {
+            // 正确的停止线程方法 而不是暴力的shutdown 因为有可能线程还没执行完毕，
+            // 也可以使用CountDownLatch来监控所有线程是不是都执行完了，那就可以直接用shutdown
+            executorService.shutdown();
+
+            // 向学生传达“XX分之内解答不完的问题全部带回去作为课后作业！”后老师等待学生答题
+            // (所有的任务都结束的时候，返回TRUE)
+            if(!executorService.awaitTermination(awaitTime, TimeUnit.MILLISECONDS)){
+                // 超时的时候向线程池中所有的线程发出中断(interrupted)。
+                executorService.shutdownNow();
+            }
+        } catch (InterruptedException e) {
+            // awaitTermination方法被中断的时候也中止线程池中全部的线程的执行。
+            System.out.println("awaitTermination interrupted: " + e);
+            executorService.shutdownNow();
+        }
 
     }
 }
