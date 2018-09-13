@@ -15,9 +15,9 @@ public class SpringThreadPool {
         final long waitTime = 8 * 1000;
         final long awaitTime = 60 * 1000;
 
-        //spring的创建线程池方式
+    /*    //spring的创建线程池方式
         ThreadPoolTaskExecutor taskExecutor = new ThreadPoolTaskExecutor();
-        /*
+        *//*
             这个值很重要会影响下面的setRejectedExecutionHandler的线程执行策略，
            因为这个值源码内部是LinkedBlockingQueue的初始化大小，而这个线程执行策略
            又是根据LinkedBlockingQueue来调整系统处理的任务是否过多，以及将怎么处理这些任务
@@ -27,7 +27,7 @@ public class SpringThreadPool {
            keepAliveTime和maximumPoolSize及BlockingQueue的类型均有关系。
            如果BlockingQueue是无界的，那么永远不会触发maximumPoolSize，自然keepAliveTime也就没有了意义。
            所以这几个值不能乱写，要根据实际情况来定
-         */
+         *//*
         taskExecutor.setQueueCapacity(100);
         taskExecutor.setCorePoolSize(10);
         taskExecutor.setKeepAliveSeconds(100);
@@ -45,7 +45,7 @@ public class SpringThreadPool {
                 System.out.println("i:" + index + " taskExecutor");
             });
         }
-        taskExecutor.shutdown();
+        taskExecutor.shutdown();*/
 
 
         // 系统空闲的进程
