@@ -9,7 +9,7 @@ import java.util.concurrent.*;
  * @description 用spring的綫程池去執行任務也是可以的
  * @create 2018-08-28 9:38
  **/
-public class springThreadPool {
+public class SpringThreadPool {
 
     public static void main(String[] args) {
         final long waitTime = 8 * 1000;
