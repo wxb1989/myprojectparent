@@ -7,7 +7,7 @@ package com.wangxuebing.redis;
  **/
 public class RedisConntion {
 
-    private final String host="";
+    private final String host="10.168.110.157";
     private int post=6379;
 
     private RedisConntion() {

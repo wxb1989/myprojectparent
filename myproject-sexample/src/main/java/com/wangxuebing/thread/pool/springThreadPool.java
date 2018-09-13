@@ -48,10 +48,12 @@ public class springThreadPool {
         taskExecutor.shutdown();
 
 
+        // 系统空闲的进程
+        int poolSize=Runtime.getRuntime().availableProcessors()*2;
         //2使用java原生的创建方式
-        ExecutorService executorService = new ThreadPoolExecutor(2, 2, 0L,
-                TimeUnit.MILLISECONDS,
-                new LinkedBlockingQueue<>(10),
+        ExecutorService executorService = new ThreadPoolExecutor(poolSize, poolSize, 0L,
+                TimeUnit.SECONDS,
+                new ArrayBlockingQueue<>(512),
                 Executors.defaultThreadFactory(),
                 new ThreadPoolExecutor.CallerRunsPolicy());
 
