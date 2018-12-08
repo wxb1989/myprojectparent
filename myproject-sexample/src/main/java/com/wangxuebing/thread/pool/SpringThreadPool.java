@@ -15,6 +15,7 @@ public class SpringThreadPool {
         final long waitTime = 8 * 1000;
         final long awaitTime = 60 * 1000;
 
+
     /*    //spring的创建线程池方式
         ThreadPoolTaskExecutor taskExecutor = new ThreadPoolTaskExecutor();
         *//*
