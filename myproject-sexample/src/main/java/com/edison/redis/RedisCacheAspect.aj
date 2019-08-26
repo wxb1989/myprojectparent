@@ -49,12 +49,13 @@ public class RedisCacheAspect {
 
         // 得到类名、方法名和参数
         Object[] args = joinPoint.getArgs();
+        Object result = new Object();
 
         //获取实现类的方法
         MethodSignature methodSignature= (MethodSignature) joinPoint.getSignature();
         Method method = methodSignature.getMethod();
 
-        //注解信息 key
+     /*   //注解信息 key
         String key = cacheable.key();
 
         //是否转换成md5值
@@ -99,7 +100,7 @@ public class RedisCacheAspect {
 
             //拿到数据格式
             result = getData(value, returnType);
-        }
+        }*/
         return result;
     }
 }
