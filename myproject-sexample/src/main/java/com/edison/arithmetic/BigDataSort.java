@@ -4,7 +4,7 @@ import java.util.Random;
 
 /**
  * @author ${Administrator}
- * @description 10000000数组的去重 原理是
+ * @description 10000000数组的去重 原理是利用byte占据jvm空间少的方式
  * @create 2017-10-17 16:14
  **/
 public class BigDataSort {
