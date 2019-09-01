@@ -59,12 +59,12 @@
             <artifactId>commons-codec</artifactId>
             <version>1.9</version>
         </dependency>
-        <!-- activemq 相关maven依赖 -->
+        <!-- activemq 相关maven依赖
         <dependency>
             <groupId>javax.jms</groupId>
             <artifactId>jms</artifactId>
             <version>1.1</version>
-        </dependency>
+        </dependency>-->
         <dependency>
             <groupId>org.apache.activemq</groupId>
             <artifactId>activemq-core</artifactId>

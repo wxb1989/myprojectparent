@@ -2,6 +2,7 @@ package com.spring.annotation;
 
 import com.spring.annotation.configuration.MyConfiguration;
 import com.spring.annotation.configuration.User;
+import org.springframework.beans.factory.support.DefaultListableBeanFactory;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Configuration;
 
