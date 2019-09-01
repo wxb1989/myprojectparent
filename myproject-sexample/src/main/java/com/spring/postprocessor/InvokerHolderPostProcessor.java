@@ -11,7 +11,11 @@ import java.lang.reflect.Method;
 
 /**
  *@author  edsion
- *  //注意：这里有个bug就是bean的实现方法必须在postProcessBeforeInitialization方法里实现否则会报NoSuchBeanDefinitionException错
+ *  //注意：这里有个bug就是bean的实现方法必须在
+ *  postProcessBeforeInitialization方法里实现否则会报NoSuchBeanDefinitionException错
+ *
+ *  InitializingBean是spring提供的所有自己的类都可以实现的一个接口
+ *  关于spring在拓展点来实现自己在业务非常的文章 https://blog.csdn.net/boling_cavalry/article/details/81474340
  */
 @Component
 public class InvokerHolderPostProcessor implements BeanPostProcessor  , InitializingBean {

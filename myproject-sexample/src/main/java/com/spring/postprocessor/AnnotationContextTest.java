@@ -8,8 +8,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  * @package com.spring.annotation
  * @description  这是一个通过spring生命周期里的BeanPostProcessor的拓展点来实现的自定义注解分发
  * InitializingBean,DisposableBean BeanFactoryAware,BeanNameAware,ApplicationContextAware
- *
- * @create 2018-11-07 15:15
+ * https://www.jianshu.com/p/6a48675ef7a3 另一种实现方式
  **/
 public class AnnotationContextTest {
 
