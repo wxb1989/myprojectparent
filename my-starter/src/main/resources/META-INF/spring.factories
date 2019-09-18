@@ -1,1 +1,2 @@
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=com.edison.configuration.StarterAutoConfigure
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.edison.configuration.StarterAutoConfigure
