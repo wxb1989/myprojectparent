@@ -5,6 +5,6 @@
 	   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
     http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 	<!-- 定义 bean 的 id，以及对应的 java 类 -->
-	<context:annotation-config />
-	<context:component-scan base-package="com.spring.postprocessor" />
+	<!--<context:annotation-config />-->
+	<!--<context:component-scan base-package="com.spring.postprocessor" />-->
 </beans>
