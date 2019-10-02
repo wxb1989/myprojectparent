@@ -1,6 +1,7 @@
 package com.spring.annotation.configuration;
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 /**
@@ -10,8 +11,8 @@ import org.springframework.context.annotation.Configuration;
  * @create 2018-11-07 15:17
  **/
 @Configuration
+@ComponentScan("com.spring")
 public class MyConfiguration {
-
 
     @Bean
     public String my(){
