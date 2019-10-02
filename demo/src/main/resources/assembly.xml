@@ -1,0 +1,50 @@
+<assembly xmlns="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.2"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.2 http://maven.apache.org/xsd/assembly-1.1.2.xsd">
+
+    <!--添加到生成文件名称的后缀符-->
+    <id>dist_app</id>
+
+    <!--
+        打包格式
+    -->
+    <formats>
+        <format>tar.gz</format>
+    </formats>
+    <includeBaseDirectory>false</includeBaseDirectory>
+
+    <!--
+        配置资源文件输出目录以及需要过滤的文件夹或文件
+    -->
+    <fileSets>
+        <!--输出resource下所有资源文件-->
+        <fileSet>
+            <directory>src/main/resources</directory>
+            <excludes>
+                <exclude>assembly.xml</exclude>
+                <exclude>db/**</exclude>
+            </excludes>
+            <outputDirectory>/</outputDirectory>
+        </fileSet>
+
+        <!--输出bin文件夹-->
+        <fileSet>
+            <directory>${project.basedir}/bin</directory>
+            <outputDirectory>/bin</outputDirectory>
+            <fileMode>0775</fileMode>
+            <includes>
+                <include>*.sh</include>
+            </includes>
+        </fileSet>
+    </fileSets>
+
+    <!--
+        配置默认所有的jar输出目录(依赖jar + 项目jar)
+    -->
+    <dependencySets>
+        <dependencySet>
+            <outputDirectory>/lib</outputDirectory>
+            <scope>runtime</scope>
+        </dependencySet>
+    </dependencySets>
+</assembly>
