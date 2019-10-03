@@ -10,7 +10,7 @@ public class NbInvocationHandler implements InvocationHandler {
 
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-
+//        method.getAnnotation(Select)
         return null;
     }
 }

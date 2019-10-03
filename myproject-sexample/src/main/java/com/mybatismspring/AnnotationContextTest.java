@@ -41,11 +41,11 @@ public class AnnotationContextTest {
          System.out.println(ac.getBean("user"));
          */
         AnnotationConfigApplicationContext acp= new AnnotationConfigApplicationContext(AppConfig.class);
-        System.out.print(acp.getBean("luban"));
+        System.out.print(acp.getBean(NbDao.class));
 
-         NbDao dao  =acp.getBean(NbDao.class);
+        /* NbDao dao  =acp.getBean(NbDao.class);
        List list= dao.getEmployees();
-       System.out.print(" getEmployees "+list.size());
+       System.out.print(" getEmployees "+list.size());*/
     }
 }
 

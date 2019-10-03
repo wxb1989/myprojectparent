@@ -18,8 +18,8 @@ public class MyFactoryBean implements FactoryBean {
 
     @Override
     public Object getObject() throws Exception {
-        Class<?>[] classz = new Class[]{Class.class};
-        Object object = Proxy.newProxyInstance(MyFactoryBean.class.getClassLoader(), classz, new NbInvocationHandler());
+        Class[] classz = new Class[]{clas};
+        Object object = Proxy.newProxyInstance(clas.getClassLoader(), classz, new NbInvocationHandler());
         System.out.println(object);
         return object;
     }
