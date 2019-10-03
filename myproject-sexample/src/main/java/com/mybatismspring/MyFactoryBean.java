@@ -1,24 +1,26 @@
 package com.mybatismspring;
 
-import com.mybatismspring.dao.NbDao;
-import com.mybatismspring.dao.UserTDao;
 import com.mybatismspring.proxy.NbInvocationHandler;
 import org.springframework.beans.factory.FactoryBean;
-import org.springframework.stereotype.Component;
 
 import java.lang.reflect.Proxy;
 
 /**
  * 实现FactoryBean
  */
-public class MyFactoryBean implements FactoryBean{
+public class MyFactoryBean implements FactoryBean {
 
-    Class clas ;
+    Class clas;
+
+    public MyFactoryBean(Class clas) {
+        this.clas = clas;
+    }
 
     @Override
     public Object getObject() throws Exception {
         Class<?>[] classz = new Class[]{Class.class};
-        Object object =  Proxy.newProxyInstance(MyFactoryBean.class.getClassLoader(), classz, new NbInvocationHandler());
+        Object object = Proxy.newProxyInstance(MyFactoryBean.class.getClassLoader(), classz, new NbInvocationHandler());
+        System.out.println(object);
         return object;
     }
 

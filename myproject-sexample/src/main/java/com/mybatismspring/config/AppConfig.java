@@ -16,6 +16,7 @@ import javax.sql.DataSource;
  */
 @Configuration
 @ComponentScan("com.mybatismspring")
+@Import(MyImportBeanDefinitionRegistert.class)
 //mybatis 扫描dao的包
 @MapperScan("com.mybatismspring.dao")
 public class AppConfig {
