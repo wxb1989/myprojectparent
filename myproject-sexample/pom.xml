@@ -42,6 +42,35 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
         </dependency>
+        <!-- 添加spring-context包 -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+        </dependency>
+        <!-- 添加spring-tx包 -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-tx</artifactId>
+        </dependency>
+        <!-- 添加spring-jdbc包 -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jdbc</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis-spring</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.quartz-scheduler/quartz -->
         <dependency>
@@ -90,10 +119,7 @@
             <artifactId>jedis</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>org.reflections</groupId>
-            <artifactId>reflections</artifactId>
-        </dependency>
+
     </dependencies>
     <profiles>
         <profile>

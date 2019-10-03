@@ -15,8 +15,13 @@ import org.springframework.context.annotation.Configuration;
 public class MyConfiguration {
 
     @Bean
-    public String my(){
+    public String my() {
         return "aaa";
+    }
+
+    @Bean
+    public User user() {
+        return new User();
     }
 
 }
