@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.1.8.RELEASE</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+
+    <groupId>com.jtcoding</groupId>
+    <artifactId>springboot-package-demo</artifactId>
+    <version>1.0.0</version>
+    <name>springboot-package-demo</name>
+    <description>Package demo project for Spring Boot</description>
+
+    <properties>
+        <java.version>1.8</java.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <!--项目名称-->
+        <finalName>${project.artifactId}-${project.version}</finalName>
+        <plugins>
+            <!--
+                maven-compiler-plugin:指定Maven编译时的设置
+                    <source>: 源代码使用的JDK版本
+                    <target>: 生成的目标class文件的编译版本
+                    <encoding>: 字符集编码
+                    <meminitial>: 编译器使用的初始内存
+                    <maxmem>: 编译器使用的最大内存
+                    <compilerArgs>: 设置Java编译器的执行参数
+                        <arg>-Xlint:deprecation</arg>: 忽略代码中已过时API警告
+                        <arg>-Xlint:unchecked</arg>: 忽略代码中未经检查或不安全的操作
+            -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                    <compilerArgs>
+                        <arg>-Xlint:deprecation</arg>
+                        <arg>-Xlint:unchecked</arg>
+                    </compilerArgs>
+                </configuration>
+            </plugin>
+
+            <!--
+                maven-source-plugin: 生成源代码包
+            -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <configuration>
+                    <attach>true</attach>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!--
+                maven-assembly-plugin: 构建可执行jar(包括项目依赖的jar)
+                    <descriptors>:指定打包的配置文件
+                    <outputDirectory>: 指定生成包依赖目录，该目录是相对于根目录
+                    <executions>: 配置执行的参数
+                        <id>dist_app</id>: 唯一标识，这里需要与assembly.xml文件中id一致
+                        <phase>package</phase>: 绑定到package生命周期阶段上
+                         <goal>single</goal>: 打包只执行一次
+                    配置完之后Maven执行:
+                        mvn clean package -Dmaven.test.skip=true
+                    若不配置<executions>相关,需执行:
+                        mvn clean package assembly:single -Dmaven.test.skip=true
+            -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <configuration>
+                    <appendAssemblyId>false</appendAssemblyId>
+                    <descriptors>
+                        <descriptor>src/main/resources/assembly.xml</descriptor>
+                    </descriptors>
+                    <outputDirectory>${project.build.directory}/application</outputDirectory>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>dist_app</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!--
+                maven-jar-plugin: 配置本项目jar信息
+                    <mainClass>: 指定本项目jar的main-class
+                    <classpathPrefix>: 指定依赖的jar以及本项目jar所在的路径
+                    <addClasspath>: 添加外部jar的classpath项
+            -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <mainClass>com.jtcoding.DemoApplication</mainClass>
+                            <classpathPrefix>../lib/</classpathPrefix>
+                            <addClasspath>false</addClasspath>
+                        </manifest>
+                    </archive>
+                    <excludes>
+                        <exclude>*.java</exclude>
+                    </excludes>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+
+</project>

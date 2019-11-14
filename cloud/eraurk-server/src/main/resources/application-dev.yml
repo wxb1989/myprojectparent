@@ -1,0 +1,25 @@
+server:
+  port: 8888
+
+eureka:
+  server:
+    enable-self-preservation: false
+    eviction-interval-timer-in-ms: 3000
+    response-cache-update-interval-ms: 10000
+    response-cache-auto-expiration-in-seconds: 180
+    peer-node-read-timeout-ms: 1200
+  instance:
+    hostname: localhost
+    lease-expiration-duration-in-seconds: 20
+    lease-renewal-interval-in-seconds: 10
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}:${spring.application.name}
+    prefer-ip-address: true
+  client:
+    # 不获取注册信息（当服务注册中心是单点而非高可用时的配置方式）
+    fetchRegistry: false
+    # 不进行注册（当服务注册中心是单点而非高可用时的配置方式）
+    registerWithEureka: false
+    serviceUrl:
+      defaultZone: http://YG0475:4c1a09@${eureka.instance.hostname}:${server.port}/eureka/
+
+

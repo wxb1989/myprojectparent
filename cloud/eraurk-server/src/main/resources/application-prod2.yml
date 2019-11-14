@@ -1,0 +1,51 @@
+spring:
+  profiles:
+    active: prod2
+  application:
+    name: eureka-server
+#  datasource:
+#    url: jdbc:mysql://172.16.10.2:3306/cxjk?useUnicode=true&characterEncoding=utf-8&useSSL=true
+#    username: cxjk_safe
+#    password: =DK89234kdc(
+#    driver-class-name: com.mysql.jdbc.Driver
+#    type: com.alibaba.druid.pool.DruidDataSource
+  boot:
+    admin:
+      client:
+        url: http://10.30.50.146:8082
+
+management:
+  endpoint:
+    health:
+      enabled: true
+      show-details: ALWAYS
+    logfile:
+      enabled: true
+    shutdown:
+      enabled: false
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+eureka:
+  server:
+    enable-self-preservation: false
+    eviction-interval-timer-in-ms: 3000
+    response-cache-update-interval-ms: 10000
+    response-cache-auto-expiration-in-seconds: 180
+  instance:
+    hostname: eureka2
+    lease-expiration-duration-in-seconds: 20
+    lease-renewal-interval-in-seconds: 10
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}:${spring.application.name}
+    prefer-ip-address: true
+  client:
+    serviceUrl:
+      defaultZone: http://YG0475:4c1a09@10.30.50.146:8090/eureka/
+    registry-fetch-interval-seconds: 10
+    register-with-eureka: true
+    fetch-registry: true
+
+server:
+  port: 8090
