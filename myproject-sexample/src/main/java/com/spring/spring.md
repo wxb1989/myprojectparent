@@ -1,0 +1,31 @@
+
+#spring原码分析
+https://blog.csdn.net/nuomizhende45/article/details/81158383 这篇文章也做了讲解
+DefaultListableBeanFactory 这个bean工厂是spring里最实现和继承最多接口和类的类
+1、scam扫描定义的包
+2、解析扫描到的包下面的对象
+4、初始化beanfactory spring 放到factory的map里去
+下面有两个流程 :如果程序没有提供实现BeanFactoryPostProcessor的实现类走5.1否则走5.2
+5.1、加载完成之后
+5.2、执行程序定义的BeanFactoryPostProcessor里的方法,
+去操作DefaultListableBeanFactory里的beanMap(主流框架都是通过这个方法来修改beanMap,做自己的事情)-
+还可以实现BeanDefinitionRegistryPostProcessor,
+也就是既可以实现BeanFactoryPostProcessor也可以实现BeanDefinitionRegistryPostProcessor,
+提倡实现BeanDefinitionRegistryPostProcessor这个类
+
+6、spring获取到beanMap里的bean,执行程序要做的事情(单例)
+
+
+#第二步解析对象骤 的描述 :spring解析bean的时候要了解DeanDefinition概念十分重要
+BeanDefinition是用来描述spring里扫描出来的java对象
+例如:BeanDefinition里有className  scope(作用域) 还有其他很多东西 
+
+
+
+#spring beanFactory的onrefash方法解释
+
+
+要了解spring的9个后置处理器 FactoryBean和BeanFactory
+
+BeanFactoryPostProcessor 
+实现这个接口可以 自己实现和修改spring容器里的bean替换成没有注入进去的bean
