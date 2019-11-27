@@ -3,12 +3,13 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.cxjk</groupId>
+    <groupId>com.cxjk.cloud</groupId>
     <artifactId>cloud</artifactId>
     <version>1.0.0</version>
 
     <modules>
         <module>eraurk-server</module>
+        <module>business</module>
     </modules>
 
     <name>cloud</name>
@@ -26,7 +27,6 @@
     <properties>
         <spring-boot.version>2.2.1.RELEASE</spring-boot.version>
         <spring-cloud.version>Hoxton.RC2</spring-cloud.version>
-        <spring-platform.version>Cairo-SR8</spring-platform.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
@@ -39,8 +39,8 @@
         <security.oauth.version>2.3.6.RELEASE</security.oauth.version>
     </properties>
 
-
     <dependencies>
+<!--        所有项目springcloud用到的jar都发在父项目里-->
         <!--Spring Boot 执行器组件-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -56,11 +56,55 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
         </dependency>
+        <!--Spring Boot openfeign组件-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+        </dependency>
+        <!--Spring Boot openfeign组件支持form表单提交方式，默认是用的Spring json-->
+        <dependency>
+            <groupId>io.github.openfeign.form</groupId>
+            <artifactId>feign-form</artifactId>
+            <version>3.0.3</version>
+        </dependency>
+        <dependency>
+            <groupId>io.github.openfeign.form</groupId>
+            <artifactId>feign-form-spring</artifactId>
+            <version>3.0.3</version>
+        </dependency>
+
+
+        <!--Spring Boot 配置扫描组件    -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+        </dependency>
         <!--Spring Boot Web组件-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+
+        <!-- 数据库链接池-->
+        <dependency>
+            <groupId>com.zaxxer</groupId>
+            <artifactId>HikariCP</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <optional>true</optional> <!-- 这个需要为 true 热部署才有效 -->
+        </dependency>
+
+
+
         <!--Spring Boot 测试组件-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -78,7 +122,13 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>1.2.60</version>
+            </dependency>
         </dependencies>
+
     </dependencyManagement>
 
     <build>

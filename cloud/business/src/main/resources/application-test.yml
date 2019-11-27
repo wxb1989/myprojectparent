@@ -1,0 +1,66 @@
+server:
+  port: 28080
+
+spring:
+  datasource:
+    url: jdbc:mysql://180.106.83.239:46986/cxjk_xspt?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    username: root
+    password: Cloud@18915898007
+    driverClassName: com.mysql.jdbc.Driver
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      connectionTimeout: 10000
+      idleTimeout: 50000
+      minimumIdle: 2
+      maximumPoolSize: 5
+      connectionTestQuery: select 1
+  mvc:
+    view:
+      prefix: /
+      suffix: .html
+  thymeleaf:
+    cache: false
+  devtools:
+    restart:
+      enabled: true
+
+eureka:
+  instance:
+    lease-renewal-interval-in-seconds: 10
+    lease-expiration-duration-in-seconds: 30
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}:${spring.application.name}
+    prefer-ip-address: true
+  client:
+    registryFetchIntervalSeconds: 15
+    serviceUrl:
+      defaultZone: http://YG0475:4c1a09@10.30.10.59:8888/eureka/
+    enabled: true
+
+logging:
+  level:
+    root: info
+
+ribbon:
+  ConnectTimeout: 60000
+  ReadTimeout: 60000
+  MaxAutoRetries: 0
+  MaxAutoRetriesNextServer: 0
+  OkToRetryOnAllOperations: false
+
+feign:
+  hystrix:
+    enabled: true
+hystrix:
+  command:
+    default:
+      execution:
+        circuitBreaker:
+          requestVolumeThreshold: 20
+          sleepWindowInMilliseconds: 5000
+        isolation:
+          thread:
+            timeoutInMilliseconds: 15000 #hystrix超时时间
+
+properties:
+ filepath: /mnt/program/apache-tomcat-8.5.32-business/webapps/tmpfile
+ downloadpath: http://180.106.83.239:28080/tmpfile

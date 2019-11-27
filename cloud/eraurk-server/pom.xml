@@ -19,7 +19,7 @@
 
     <parent>
         <artifactId>cloud</artifactId>
-        <groupId>com.cxjk</groupId>
+        <groupId>com.cxjk.cloud</groupId>
         <version>1.0.0</version>
     </parent>
 

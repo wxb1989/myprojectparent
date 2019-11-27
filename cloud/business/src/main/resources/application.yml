@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: cloud-business
+  profiles:
+    active: dev
+
