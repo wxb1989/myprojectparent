@@ -1,6 +1,6 @@
 package com.edison.util;
 
-import org.json.JSONObject;
+import com.alibaba.fastjson.JSONObject;
 import org.springframework.core.LocalVariableTableParameterNameDiscoverer;
 import org.springframework.expression.ParserContext;
 import org.springframework.expression.common.TemplateParserContext;
@@ -53,7 +53,7 @@ public class SpringExpressionUtils {
   Object returnVal = parser.parseExpression(key.replace("#{", "#{#"), parserContext).getValue(context, Object.class);
 
   //这块这么做，是为了Object和String都可以转成String类型的，可以作为key
-  String return_data_key = JSONObject.valueToString(returnVal);
+  String return_data_key = JSONObject.toJSONString(returnVal);
   //转换成md5，是因为redis的key过长，并且这种大key的数量过多，就会占用内存，影响性能
   if(keyTransformMd5) {
    return_data_key = MD5.getMD5(return_data_key);
