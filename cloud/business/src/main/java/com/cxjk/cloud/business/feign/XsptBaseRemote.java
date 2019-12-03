@@ -47,9 +47,4 @@ public interface XsptBaseRemote {
 
     @PostMapping(value = "/apis/ocr/idCardBack", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     JSONObject uploadOcrIdCardBackFile(@RequestPart(value = "file") MultipartFile file);
-
-
-
-
-
 }
