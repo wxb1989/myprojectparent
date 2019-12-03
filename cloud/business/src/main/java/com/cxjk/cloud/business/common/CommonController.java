@@ -73,6 +73,7 @@ public class CommonController {
             params.forEach((k, v) -> {
                 BasicNameValuePair param = new BasicNameValuePair(k, v.get(0));
                 list.add(param);
+
             });
             uriBuilder.setParameters(list);
         }
