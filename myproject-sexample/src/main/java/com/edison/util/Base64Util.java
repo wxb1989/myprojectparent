@@ -14,6 +14,11 @@ import java.util.Base64;
  **/
 public class Base64Util {
 
+    /**
+     * 文件转base64
+     * @param filePath
+     * @return
+     */
     public String encryptToBase64(String filePath) {
         if (filePath == null) {
             return null;
@@ -28,6 +33,12 @@ public class Base64Util {
         return null;
     }
 
+    /**
+     * base64转文件
+     * @param base64
+     * @param filePath
+     * @return
+     */
     public String decryptByBase64(String base64, String filePath) {
         if (base64 == null && filePath == null) {
             return "生成文件失败，请给出相应的数据。";
