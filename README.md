@@ -15,3 +15,5 @@ mvn demo clean package assembly:single -Dmaven.test.skip=true
 也就不会发生多个子模块使用版本不一致的情况，帮助降低依赖冲突的几率。
 如果子模块不声明依赖的使用，
 即使该依赖在父POM中的dependencyManagement中声明了，也不会产生任何效果。
+
+https://gitee.com/52itstyle/spring-boot-blog/tree/master 
