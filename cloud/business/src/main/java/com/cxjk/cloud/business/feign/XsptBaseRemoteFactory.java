@@ -1,7 +1,6 @@
 package com.cxjk.cloud.business.feign;
 
 import com.alibaba.fastjson.JSONObject;
-import com.amazonaws.services.s3.model.Bucket;
 import feign.hystrix.FallbackFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
@@ -21,17 +20,6 @@ public class XsptBaseRemoteFactory implements FallbackFactory<XsptBaseRemote> {
     @Override
     public XsptBaseRemote create(Throwable throwable) {
         return new XsptBaseRemote() {
-            @Override
-            public String getMaxNo() {
-                System.out.println("  服务降级" + throwable);
-                return "";
-            }
-
-            @Override
-            public List<Bucket> listBucket() {
-                return null;
-            }
-
             @Override
             public List<String> listObject() {
                 return null;

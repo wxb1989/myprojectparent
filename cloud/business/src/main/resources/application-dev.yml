@@ -26,6 +26,11 @@ spring:
     livereload:
       enabled: true
 
+  cloud:
+    sentinel:
+      transport:
+        dashboard: localhost:8081
+
 eureka:
   instance:
     lease-renewal-interval-in-seconds: 10

@@ -15,8 +15,6 @@ import java.util.List;
 )
 public interface XsptBaseRemote {
 
-
-
     @GetMapping(value = "/apis/amazonS3/listObject")
     List<String> listObject();
 

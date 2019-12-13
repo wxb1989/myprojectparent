@@ -85,6 +85,13 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
+        <!--sentinel-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
+        </dependency>
+        <!--sentinel end-->
+
         <!-- 数据库链接池-->
         <dependency>
             <groupId>com.zaxxer</groupId>
@@ -129,6 +136,13 @@
                 <artifactId>fastjson</artifactId>
                 <version>1.2.60</version>
             </dependency>
+            <!--sentinel-->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
+                <version>0.2.1.RELEASE</version>
+            </dependency>
+            <!--sentinel end-->
         </dependencies>
 
     </dependencyManagement>
