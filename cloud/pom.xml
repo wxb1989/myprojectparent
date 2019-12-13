@@ -10,6 +10,7 @@
     <modules>
         <module>eraurk-server</module>
         <module>business</module>
+        <module>getway</module>
     </modules>
 
     <name>cloud</name>

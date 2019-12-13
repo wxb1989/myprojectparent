@@ -1,5 +1,5 @@
 server:
-  port: 28080
+  port: 18080
 
 spring:
   datasource:
@@ -23,6 +23,13 @@ spring:
   devtools:
     restart:
       enabled: true
+    livereload:
+      enabled: true
+
+  cloud:
+    sentinel:
+      transport:
+        dashboard: localhost:8081
 
 eureka:
   instance:
@@ -33,34 +40,13 @@ eureka:
   client:
     registryFetchIntervalSeconds: 15
     serviceUrl:
-      defaultZone: http://YG0475:4c1a09@10.30.10.59:8888/eureka/
-    enabled: true
+      defaultZone: http://YG0475:4c1a09@localhost:8888/eureka/
+    enabled: false
 
 logging:
   level:
     root: info
 
-ribbon:
-  ConnectTimeout: 60000
-  ReadTimeout: 60000
-  MaxAutoRetries: 0
-  MaxAutoRetriesNextServer: 0
-  OkToRetryOnAllOperations: false
-
-feign:
-  hystrix:
-    enabled: true
-hystrix:
-  command:
-    default:
-      execution:
-        circuitBreaker:
-          requestVolumeThreshold: 20
-          sleepWindowInMilliseconds: 5000
-        isolation:
-          thread:
-            timeoutInMilliseconds: 15000 #hystrix超时时间
-
 properties:
-  filepath: /mnt/program/apache-tomcat-8.5.32-business/webapps/tmpfile
-  downloadpath: http://180.106.83.239:28080/tmpfile
+  filepath: f:\\contracts
+  downloadpath: http://localhost:28080/tmpfile/

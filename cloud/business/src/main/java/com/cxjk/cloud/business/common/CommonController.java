@@ -45,7 +45,7 @@ public class CommonController {
     public Object callService(@RequestParam String apiServiceId, @RequestParam String apiPath, HttpServletRequest request) throws URISyntaxException {
         Map map = new HashMap(6);
         List<String> services = discoveryClient.getServices();
-        if (!services.contains(apiServiceId)){
+        if (!services.contains(apiServiceId)) {
             map.put("code", "9001");
             map.put("msg", "service not exist!");
             return map;
@@ -80,7 +80,7 @@ public class CommonController {
         try {
             String result = loadBalanced.exchange(uriBuilder.build(), Objects.requireNonNull(HttpMethod.resolve(method.toUpperCase())), entity, String.class).getBody();
             return JSON.parse(result);
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println(e.getMessage());
             map.put("code", "9002");
             map.put("msg", e.getMessage());

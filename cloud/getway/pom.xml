@@ -8,9 +8,9 @@
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.cxjk.cloud.business</groupId>
-    <artifactId>business</artifactId>
-    <name>business</name>
+    <groupId>com.cxjk.cloud.getway</groupId>
+    <artifactId>getway</artifactId>
+    <name>getway</name>
     <packaging>jar</packaging>
 
     <properties>

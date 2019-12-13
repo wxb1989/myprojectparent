@@ -12,7 +12,7 @@ import java.util.List;
  * @author
  * @package com.cxjky.xspt.common.FeignRemote
  * @description api项目服务熔断处理工厂
- *eate 2019-10-26 13:44
+ * eate 2019-10-26 13:44
  **/
 @Component
 public class XsptBaseRemoteFactory implements FallbackFactory<XsptBaseRemote> {

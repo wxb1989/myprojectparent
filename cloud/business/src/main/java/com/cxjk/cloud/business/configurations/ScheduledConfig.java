@@ -12,9 +12,9 @@ import java.util.concurrent.ThreadPoolExecutor;
 
 /**
  * 线程池和定时任务的配置
+ *
  * @author sw
  * date 2019-10
- *
  */
 @Configuration
 public class ScheduledConfig implements SchedulingConfigurer {
@@ -24,7 +24,7 @@ public class ScheduledConfig implements SchedulingConfigurer {
         scheduledTaskRegistrar.setTaskScheduler(this.taskScheduler());
     }
 
-    @Bean(destroyMethod="shutdown")
+    @Bean(destroyMethod = "shutdown")
     public ThreadPoolTaskScheduler taskScheduler() {
         ThreadPoolTaskScheduler scheduler = new ThreadPoolTaskScheduler();
         scheduler.setPoolSize(20);
@@ -37,7 +37,7 @@ public class ScheduledConfig implements SchedulingConfigurer {
 
 
     @Bean("asyncTaskExecutor")
-    public Executor taskExecutor(){
+    public Executor taskExecutor() {
         ThreadPoolTaskExecutor asyncTaskExecutor = new ThreadPoolTaskExecutor();
         asyncTaskExecutor.setCorePoolSize(4);
         asyncTaskExecutor.setMaxPoolSize(8);

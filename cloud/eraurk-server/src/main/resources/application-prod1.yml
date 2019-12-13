@@ -3,12 +3,12 @@ spring:
     active: prod1
   application:
     name: eureka-server
-#  datasource:
-#    url: jdbc:mysql://10.30.50.49:3306/cxjk?useUnicode=true&characterEncoding=utf-8&useSSL=true
-#    username: cxjk_safe
-#    password: =DK89234kdc(
-#    driver-class-name: com.mysql.jdbc.Driver
-#    type: com.alibaba.druid.pool.DruidDataSource
+  #  datasource:
+  #    url: jdbc:mysql://10.30.50.49:3306/cxjk?useUnicode=true&characterEncoding=utf-8&useSSL=true
+  #    username: cxjk_safe
+  #    password: =DK89234kdc(
+  #    driver-class-name: com.mysql.jdbc.Driver
+  #    type: com.alibaba.druid.pool.DruidDataSource
   boot:
     admin:
       client:

@@ -11,7 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.util.List;
 
 @FeignClient(name = "xspt-base", configuration = FeignMultipartSupportConfiguration.class,
-        fallbackFactory= XsptBaseRemoteFactory.class
+        fallbackFactory = XsptBaseRemoteFactory.class
 )
 public interface XsptBaseRemote {
 

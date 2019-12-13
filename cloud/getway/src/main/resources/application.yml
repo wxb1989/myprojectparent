@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: cloud-getway
+  profiles:
+    active: dev
+

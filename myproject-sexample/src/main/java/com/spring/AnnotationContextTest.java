@@ -27,14 +27,14 @@ public class AnnotationContextTest {
 
          第二种
          */
-        AnnotationConfigApplicationContext ac
+      /*  AnnotationConfigApplicationContext ac
                 = new AnnotationConfigApplicationContext();
         ac.addBeanFactoryPostProcessor(new DemBeanFactoryPostProcessor());
         ac.register(MyConfiguration.class);
         ac.refresh();
         System.out.println(ac.getBean("my"));
         System.out.println(ac.getBean("user"));
-        System.out.println(ac.getBean("testDao"));
+        System.out.println(ac.getBean("testDao"));*/
 
 
     }

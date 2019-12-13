@@ -16,7 +16,7 @@ public class SystemExceptionHandler {
      * 自定义异常
      */
     @ExceptionHandler(SystemException.class)
-    public Result handleRRException(RrException e){
+    public Result handleRRException(SystemException e){
         Result r = new Result();
         r.put("code", e.getCode());
         r.put("msg", e.getMessage());
