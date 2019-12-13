@@ -1,0 +1,75 @@
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+    <title>Blue Chatter room</title>
+	  <SCRIPT TYPE="text/javascript">
+            function join(){
+			    var name = document.getElementById("username").value;
+				if(name == null)
+				   alert("请输入姓名");
+                var url = "http://localhost:8080/join?name=" + name + "&content=join";
+                var request =  new XMLHttpRequest();
+				//request.multipart =true;
+                request.open("GET", url, true);
+                request.setRequestHeader("Content-Type","text/html;charset=utf-8");
+                request.onreadystatechange = function() {
+				    console.log('状态码' + request.readyState);
+					console.log('内容' + request.responseText);
+                    if (request.readyState == 3) {
+                        if (request.status == 200){
+                            if (request.responseText) {
+                                document.getElementById("chat").innerHTML = request.responseText;
+                            }
+                        }
+                     // go();
+                    }
+                };
+                request.send();
+				document.getElementById("join").className = 'hidden';
+				document.getElementById("joined").className = '';
+				document.getElementById("currentUser").innerHTML = name;
+            }
+			
+			 function send(){
+			    var name = document.getElementById("username").value;
+				var content = document.getElementById("phrase").value;
+                var url = "http://localhost:8080/chat?name=" + name + "&content=" + content;
+                var request =  new XMLHttpRequest();
+				request.multipart =true;
+                request.open("GET", url, true);
+                request.setRequestHeader("Content-Type","application/x-javascript;charset=utf-8");
+                request.onreadystatechange = function() {
+				    console.log('send状态码' + request.readyState);
+					console.log('send内容' + request.responseText);
+                    if (request.readyState == 4) {
+                        if (request.status == 200){
+                            console.log('chat状态码' + request.readyState);
+				        	console.log('chat内容' + request.responseText);
+                        }
+                     // go();
+                    }
+                };
+                request.send(null);
+            }
+        </SCRIPT>
+    <link rel="stylesheet" type="text/css" href="chat.css"></link>
+</head>
+<body>
+<h1>Netty AJAX Chat</h1>
+
+<div id="chatroom">
+ <div id="chat"></div><div id="members"></div>
+ <div id="input">
+   <div id="join" >
+     Username:&nbsp;<input id="username" type="text"/><input id="joinB" class="button" type="button"  onClick="join()" name="join" value="Join"/>
+   </div>
+   <div id="joined" class="hidden">
+     当前用户：<span id="currentUser"></span>&nbsp; Chat:&nbsp;<input id="phrase" type="text"></input>
+     <input id="sendB" class="button" type="button" name="join" value="Send" onClick="send()"/>
+   </div>
+  </div>
+ </div>
+<p>基于Netty，采用Streaming方式的Comet。使用长连接推送聊天信息</p>
+<h3>Powered By Netty 4.0 Alpha and Comet Streaming</h3>
+
+</body>

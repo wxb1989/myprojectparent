@@ -10,6 +10,7 @@
     <version>1.0.0</version>
     <modules>
         <module>myproject-sexample</module>
+        <module>netty-all</module>
     </modules>
     <properties>
         <spring-version>5.1.4.RELEASE</spring-version>
@@ -17,6 +18,7 @@
     </properties>
     <dependencyManagement>
         <dependencies>
+
             <!-- 添加Spring5.1.4的核心包 -->
             <dependency>
                 <groupId>org.springframework</groupId>
@@ -342,10 +344,16 @@
                 <artifactId>amqp-client</artifactId>
                 <version>3.0.4</version>
             </dependency>
+
             <dependency>
                 <groupId>io.netty</groupId>
                 <artifactId>netty</artifactId>
-                <version>3.4.0.Final</version>
+                <version>4.0.0.Alpha8</version>
+            </dependency>
+            <dependency>
+                <groupId>com.caucho</groupId>
+                <artifactId>hessian</artifactId>
+                <version>4.0.7</version>
             </dependency>
             <dependency>
                 <groupId>commons-beanutils</groupId>
@@ -363,7 +371,6 @@
                 <artifactId>reflections</artifactId>
                 <version>0.9.11</version>
             </dependency>
-
         </dependencies>
     </dependencyManagement>
     <build>
