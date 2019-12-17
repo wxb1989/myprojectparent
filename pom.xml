@@ -10,7 +10,7 @@
     <version>1.0.0</version>
     <modules>
         <module>myproject-sexample</module>
-        <module>netty-all</module>
+        <module>netty-project</module>
     </modules>
     <properties>
         <spring-version>5.1.4.RELEASE</spring-version>
@@ -344,17 +344,6 @@
                 <artifactId>amqp-client</artifactId>
                 <version>3.0.4</version>
             </dependency>
-
-            <dependency>
-                <groupId>io.netty</groupId>
-                <artifactId>netty</artifactId>
-                <version>4.0.0.Alpha8</version>
-            </dependency>
-            <dependency>
-                <groupId>com.caucho</groupId>
-                <artifactId>hessian</artifactId>
-                <version>4.0.7</version>
-            </dependency>
             <dependency>
                 <groupId>commons-beanutils</groupId>
                 <artifactId>commons-beanutils</artifactId>
@@ -370,6 +359,18 @@
                 <groupId>org.reflections</groupId>
                 <artifactId>reflections</artifactId>
                 <version>0.9.11</version>
+            </dependency>
+
+<!--            netty 和 消息序列化lib-->
+            <dependency>
+                <groupId>com.caucho</groupId>
+                <artifactId>hessian</artifactId>
+                <version>4.0.7</version>
+            </dependency>
+            <dependency>
+                <groupId>io.netty</groupId>
+                <artifactId>netty-all</artifactId>
+                <version>4.1.36.Final</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
