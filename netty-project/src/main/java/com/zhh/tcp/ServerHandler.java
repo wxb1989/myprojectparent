@@ -24,7 +24,7 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
     public void channelInactive(ChannelHandlerContext ctx) throws Exception {
         super.channelInactive(ctx);
         System.out.println("ServerHandler channelInactive()");
-        // ÓÃ»§¶Ï¿ªÁ¬½Óºó£¬ÒÆ³ıchannel
+        // ç”¨æˆ·æ–­å¼€è¿æ¥åï¼Œç§»é™¤channel
         ChannelContainer.getInstance().removeChannelIfConnectNoActive(ctx.channel());
     }
 
@@ -43,10 +43,10 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
         MessageProtobuf.Msg message = (MessageProtobuf.Msg) msg;
-        System.out.println("ÊÕµ½À´×Ô¿Í»§¶ËµÄÏûÏ¢£º" + message);
+        System.out.println("æ”¶åˆ°æ¥è‡ªå®¢æˆ·ç«¯çš„æ¶ˆæ¯ï¼š" + message);
         int msgType = message.getHead().getMsgType();
         switch (msgType) {
-            // ÎÕÊÖÏûÏ¢
+            // æ¡æ‰‹æ¶ˆæ¯
             case 1001: {
                 String fromId = message.getHead().getFromId();
                 JSONObject jsonObj = JSON.parseObject(message.getHead().getExtend());
@@ -54,7 +54,7 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
                 JSONObject resp = new JSONObject();
                 if (token.equals("token_" + fromId)) {
                     resp.put("status", 1);
-                    // ÎÕÊÖ³É¹¦ºó£¬±£´æÓÃ»§Í¨µÀ
+                    // æ¡æ‰‹æˆåŠŸåï¼Œä¿å­˜ç”¨æˆ·é€šé“
                     ChannelContainer.getInstance().saveChannel(new NettyChannel(fromId, ctx.channel()));
                 } else {
                     resp.put("status", -1);
@@ -66,16 +66,16 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
                 break;
             }
 
-            // ĞÄÌøÏûÏ¢
+            // å¿ƒè·³æ¶ˆæ¯
             case 1002: {
-                // ÊÕµ½ĞÄÌøÏûÏ¢£¬Ô­Ñù·µ»Ø
+                // æ”¶åˆ°å¿ƒè·³æ¶ˆæ¯ï¼ŒåŸæ ·è¿”å›
                 String fromId = message.getHead().getFromId();
                 ChannelContainer.getInstance().getActiveChannelByUserId(fromId).getChannel().writeAndFlush(message);
                 break;
             }
 
             case 2001: {
-                // ÊÕµ½2001»ò3001ÏûÏ¢£¬·µ»Ø¸ø¿Í»§¶ËÏûÏ¢·¢ËÍ×´Ì¬±¨¸æ
+                // æ”¶åˆ°2001æˆ–3001æ¶ˆæ¯ï¼Œè¿”å›ç»™å®¢æˆ·ç«¯æ¶ˆæ¯å‘é€çŠ¶æ€æŠ¥å‘Š
                 String fromId = message.getHead().getFromId();
                 MessageProtobuf.Msg.Builder sentReportMsgBuilder = MessageProtobuf.Msg.newBuilder();
                 MessageProtobuf.Head.Builder sentReportHeadBuilder = MessageProtobuf.Head.newBuilder();
@@ -86,14 +86,14 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
                 sentReportMsgBuilder.setHead(sentReportHeadBuilder.build());
                 ChannelContainer.getInstance().getActiveChannelByUserId(fromId).getChannel().writeAndFlush(sentReportMsgBuilder.build());
 
-                // Í¬Ê±×ª·¢ÏûÏ¢µ½½ÓÊÕ·½
+                // åŒæ—¶è½¬å‘æ¶ˆæ¯åˆ°æ¥æ”¶æ–¹
                 String toId = message.getHead().getToId();
                 ChannelContainer.getInstance().getActiveChannelByUserId(toId).getChannel().writeAndFlush(message);
                 break;
             }
 
             case 3001: {
-                // todo ÈºÁÄ£¬×Ô¼ºÊµÏÖ°É£¬toId¿ÉÒÔÊÇÈºid£¬¸ù¾İÈºid²éÕÒËùÓĞÔÚÏßÓÃ»§µÄid£¬Ñ­»·±éÀúchannel·¢ËÍ¼´¿É¡£
+                // todo ç¾¤èŠï¼Œè‡ªå·±å®ç°å§ï¼ŒtoIdå¯ä»¥æ˜¯ç¾¤idï¼Œæ ¹æ®ç¾¤idæŸ¥æ‰¾æ‰€æœ‰åœ¨çº¿ç”¨æˆ·çš„idï¼Œå¾ªç¯éå†channelå‘é€å³å¯ã€‚
                 break;
             }
 

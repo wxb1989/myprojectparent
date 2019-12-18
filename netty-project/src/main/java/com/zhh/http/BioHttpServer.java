@@ -16,14 +16,14 @@ public class BioHttpServer {
 	public static final String CR = "\r";
 	public static final String LF = "\n";
 	public static CountDownLatch latch = new CountDownLatch(1);
-	// «∑Ò π”√œﬂ≥Ã≥ÿ
+	//ÊòØÂê¶‰ΩøÁî®Á∫øÁ®ãÊ±†
 	private static  boolean isDistribute = true;
 	public static void main(String[] args){
-		
+
 		BioHttpServer.run();
 
 	}
-	
+
 	public static class Connector implements Runnable {
 
 		public void run() {
@@ -43,55 +43,55 @@ public class BioHttpServer {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-            
-			
-			
+
+
+
 		}
-		
-		
+
+
 	}
-	
+
 	public static void run(){
 		try{
 			//InetSocketAddress address = new InetSocketAddress("10.58.99.27", 9090);
-		    //InetAddress address = 	InetAddress.getByName("10.58.99.27");
-            ServerSocket serverSocket = new ServerSocket(9090,1);
-            ExecutorService threadPool = Executors.newCachedThreadPool();
+			//InetAddress address = 	InetAddress.getByName("10.58.99.27");
+			ServerSocket serverSocket = new ServerSocket(9090,1);
+			ExecutorService threadPool = Executors.newCachedThreadPool();
 //            for(int i = 0; i < 1;i++){
 //            	new Thread(new BioHttpServer.Connector()).start();
 //            }
 //            latch.countDown();
-            while(true){
-                   Socket client = serverSocket.accept();
-                   Thread.sleep(800);
-                   client.close();
-                 //  client.shutdownOutput();
+			while(true){
+				Socket client = serverSocket.accept();
+				Thread.sleep(800);
+				client.close();
+				//  client.shutdownOutput();
 //                   if(isDistribute){
 //                	   threadPool.execute(new SocketProcessor(client));
 //                   }else{
 //                	   new SocketProcessor(client).run();
 //                   }
-                   
-            }
-            
-        }catch(Exception e){
-            e.printStackTrace();
-        }finally{
-            
-        }
+
+			}
+
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+
+		}
 	}
 }
 
 
 
 class SocketProcessor implements Runnable {
-	
+
 	private Socket socket;
 	public SocketProcessor(Socket socket){
-	    this.socket = socket;	
+		this.socket = socket;
 	}
 	public void run() {
-		
+
 		InputStream ins;
 		PrintWriter pw = null;
 		try {
@@ -99,7 +99,7 @@ class SocketProcessor implements Runnable {
 			int length = ins.available();
 			byte[] request = new byte[length];
 			ins.read(request);
-			
+
 			pw = new PrintWriter(socket.getOutputStream());
 			pw.write("HTTP/1.1 200 OK" + BioHttpServer.CR + BioHttpServer.LF);
 			pw.write("Content-Type: text/html; charset=UTF-8" + BioHttpServer.CR + BioHttpServer.LF );
@@ -107,20 +107,20 @@ class SocketProcessor implements Runnable {
 			pw.write(BioHttpServer.CR + BioHttpServer.LF);
 			pw.write("Hello Bio,It wroks");
 			pw.flush();
-			
+
 		} catch (IOException e) {
 			e.printStackTrace();
 		}finally{
 //			try {
-				//socket.close();
-				//pw.close();
+			//socket.close();
+			//pw.close();
 //			} catch (IOException e) {
 //				e.printStackTrace();
 //			}
 		}
-		
-		
+
+
 	}
-	
-	
+
+
 }
