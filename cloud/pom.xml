@@ -47,6 +47,10 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jdbc</artifactId>
+        </dependency>
         <!--Spring Cloud 基础-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
@@ -73,7 +77,6 @@
             <artifactId>feign-form-spring</artifactId>
             <version>3.0.3</version>
         </dependency>
-
 
         <!--Spring Boot 配置扫描组件    -->
         <dependency>
