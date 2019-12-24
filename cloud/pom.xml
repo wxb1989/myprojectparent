@@ -144,6 +144,11 @@
                 <version>0.2.1.RELEASE</version>
             </dependency>
             <!--sentinel end-->
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>23.0</version>
+            </dependency>
         </dependencies>
 
     </dependencyManagement>

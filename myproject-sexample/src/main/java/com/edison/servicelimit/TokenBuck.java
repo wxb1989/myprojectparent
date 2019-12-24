@@ -27,7 +27,7 @@ public class TokenBuck {
 
     //可以使用 AtomicInteger+容量  可以不用Queue实现
     private AtomicInteger phoneNumbers=new AtomicInteger(0);
-    private RateLimiter rateLimiter= RateLimiter.create(20d);//一秒只能执行五次
+    private RateLimiter rateLimiter= RateLimiter.create(20d);//一秒只能执行10次
     //默认销售500台
     private final static int DEFALUT_LIMIT=500;
     private final int saleLimit;
@@ -50,7 +50,7 @@ public class TokenBuck {
 
         //目前设置超时时间，10秒内没有抢到就抛出异常
         //这里的TimeOut*Ratelimiter=总数  这里的超时就是让别人抢几秒，所以设置总数也可以由这里的超时和RateLimiter来计算
-        boolean success = rateLimiter.tryAcquire(10, TimeUnit.SECONDS);
+        boolean success = rateLimiter.tryAcquire(1000, TimeUnit.SECONDS);
         if (success){
             if (phoneNumbers.get()>=saleLimit){
                 throw new IllegalStateException("Phone has been sale "+saleLimit+" can not  buy more...");
