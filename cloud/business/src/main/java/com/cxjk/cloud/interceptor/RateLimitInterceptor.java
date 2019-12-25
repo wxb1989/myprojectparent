@@ -28,9 +28,9 @@ public class RateLimitInterceptor implements Filter {
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         if (!rateLimiter.tryAcquire()) {
-            //如果限流成功就会返回504，请求超时
+            //如果限流成功就会返回403，请求超时
             HttpServletResponse httpResponse = (HttpServletResponse) servletResponse;
-            httpResponse.sendError(HttpServletResponse.SC_GATEWAY_TIMEOUT);
+            httpResponse.sendError(HttpServletResponse.SC_FORBIDDEN);
             System.out.println(">>>>>>>>>> 亲！接口限流,请稍后重试！");
             return;
         }
