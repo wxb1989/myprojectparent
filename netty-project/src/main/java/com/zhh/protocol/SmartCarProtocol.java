@@ -28,6 +28,9 @@ public class SmartCarProtocol {
      */
     private byte[] content;
 
+    public SmartCarProtocol() {
+    }
+
     /**
      * 用于初始化，SmartCarProtocol
      *

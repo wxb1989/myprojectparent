@@ -1,10 +1,7 @@
 package com.zhh.protocol;
 
 import io.netty.bootstrap.ServerBootstrap;
-import io.netty.channel.ChannelFuture;
-import io.netty.channel.ChannelInitializer;
-import io.netty.channel.ChannelOption;
-import io.netty.channel.EventLoopGroup;
+import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
@@ -49,10 +46,11 @@ public class Server {
         @Override
         protected void initChannel(SocketChannel ch) throws Exception {
             // 添加自定义协议的编解码工具
-            ch.pipeline().addLast(new SmartCarEncoder());
-            ch.pipeline().addLast(new SmartCarDecoder());
+            ChannelPipeline channelPipeline =  ch.pipeline();
+            channelPipeline.addLast(new SmartCarEncoder());
+            channelPipeline.addLast(new SmartCarDecoder());
             // 处理网络IO
-            ch.pipeline().addLast(new ServerHandler());
+            channelPipeline.addLast(new ServerHandler());
         }
     }
 

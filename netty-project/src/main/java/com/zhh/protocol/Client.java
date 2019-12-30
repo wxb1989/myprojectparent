@@ -30,6 +30,7 @@ public class Client {
             // 异步链接服务器 同步等待链接成功
             ChannelFuture f = b.connect(host, port).sync();
             // 等待链接关闭
+            f.channel().writeAndFlush("hello");
             f.channel().closeFuture().sync();
         } finally {
             group.shutdownGracefully();

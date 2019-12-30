@@ -2,34 +2,36 @@ package com.zhh.protocol;
 
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
+import io.netty.channel.SimpleChannelInboundHandler;
+
+import java.nio.charset.Charset;
+import java.util.UUID;
 
 /**
  * 服务端接收的消息
  */
-public class ServerHandler extends ChannelInboundHandlerAdapter {
-    // 用于获取客户端发送的信息
+public class ServerHandler extends SimpleChannelInboundHandler<SmartCarProtocol> {
+    private int count;
     @Override
-    public void channelRead(ChannelHandlerContext ctx, Object msg)
-            throws Exception {
-        // 用于获取客户端发来的数据信息
-        SmartCarProtocol body = (SmartCarProtocol) msg;
-        System.out.println("Server接受的客户端的信息 :" + body.toString());
+    protected void channelRead0(ChannelHandlerContext ctx, SmartCarProtocol msg) throws Exception {
+        System.out.println("服务端接受到的数据：");
+        System.out.println("数据长度:"+msg.getContentLength());
+        System.out.println("数据内容："+ new String(msg.getContent(), Charset.forName("utf-8")) );
+        System.out.println("服务端接收到的消息数量:"+(++count));
 
-        // 会写数据给客户端
-        String str = "Hi I am Server ...";
-        SmartCarProtocol response = new SmartCarProtocol(str.getBytes().length, str.getBytes());
-        // 当服务端完成写操作后，关闭与客户端的连接
-        ctx.writeAndFlush(response);
-        // .addListener(ChannelFutureListener.CLOSE);
+        String responseMessage = UUID.randomUUID().toString();
+        int responseLength = responseMessage.getBytes(Charset.forName("utf-8")).length;
+        byte[] responseContent = responseMessage.getBytes(Charset.forName("utf-8"));
+        SmartCarProtocol personProtocal = new SmartCarProtocol();
+        personProtocal.setContentLength(responseLength);
+        personProtocal.setContent(responseContent);
+        ctx.writeAndFlush(personProtocal);
 
-        // 当有写操作时，不需要手动释放msg的引用
-        // 当只有读操作时，才需要手动释放msg的引用
     }
 
     @Override
-    public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause)
-            throws Exception {
-        // cause.printStackTrace();
+    public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
+        cause.printStackTrace();
         ctx.close();
     }
 }
