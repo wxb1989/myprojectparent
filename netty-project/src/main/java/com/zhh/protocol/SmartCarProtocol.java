@@ -1,5 +1,6 @@
 package com.zhh.protocol;
 
+import java.io.Serializable;
 import java.util.Arrays;
 
 /**
@@ -13,8 +14,11 @@ import java.util.Arrays;
  * 2.传输数据的长度contentLength，int类型
  * 3.要传输的数据
  * </pre>
+ * @author wangxuebin
  */
-public class SmartCarProtocol {
+public class SmartCarProtocol implements Serializable {
+
+    private static final long	serialVersionUID	= 1L;
     /**
      * 消息的开头的信息标志
      */
