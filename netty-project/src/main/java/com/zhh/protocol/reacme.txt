@@ -1,5 +1,7 @@
 Netty之解决TCP粘包拆包(自定义协议)
 https://blog.csdn.net/zbw18297786698/article/details/53691915
+https://blog.csdn.net/hy245120020/article/details/50395818
+
 
 1、什么是粘包/拆包
 
@@ -14,3 +16,4 @@ https://blog.csdn.net/zbw18297786698/article/details/53691915
      2.3、将消息分为消息头和消息体，消息头中包含表示信息的总长度（或者消息体长度）的字段
 
 3、自定义协议，来实现TCP的粘包/拆包问题
+
