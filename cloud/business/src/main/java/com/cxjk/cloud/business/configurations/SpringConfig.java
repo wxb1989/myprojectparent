@@ -15,13 +15,35 @@ import org.springframework.util.unit.DataUnit;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import org.springframework.web.filter.CorsFilter;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 
 import javax.servlet.MultipartConfigElement;
 import javax.servlet.http.HttpServletRequest;
 import java.nio.charset.StandardCharsets;
 
+/**
+ * spring配置的bean都放在这里
+ * @author wangxuebin
+ *
+   也可以用这种方式做跨域
+  extends WebMvcConfigurationSupport
+  @Override
+protected void addCorsMappings(CorsRegistry registry) {
+registry.addMapping("/**")
+.allowCredentials(true)
+.allowedHeaders("*")
+.allowedOrigins("*")
+.allowedMethods("*");
+}
+ */
 @Configuration
-public class SpringConfig {
+public class SpringConfig   {
+
+
 
     @Bean
     @LoadBalanced
@@ -67,5 +89,22 @@ public class SpringConfig {
         /// 设置总上传数据总大小50M
         factory.setMaxRequestSize(DataSize.of(50, DataUnit.MEGABYTES));//KB,MB
         return factory.createMultipartConfig();
+    }
+
+    /**
+     * 跨域配置
+     * @return
+     */
+    @Bean
+    public CorsFilter corsFilter() {
+        CorsConfiguration config = new CorsConfiguration();
+        config.addAllowedOrigin("*");
+        config.setAllowCredentials(true);
+        config.addAllowedMethod("*");
+        config.addAllowedHeader("*");
+        config.addExposedHeader("*");
+        UrlBasedCorsConfigurationSource configSource = new UrlBasedCorsConfigurationSource();
+        configSource.registerCorsConfiguration("/**", config);
+        return new CorsFilter(configSource);
     }
 }

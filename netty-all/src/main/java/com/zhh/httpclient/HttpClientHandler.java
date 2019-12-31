@@ -9,7 +9,7 @@ import io.netty.handler.codec.http.HttpResponse;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingDeque;
 
-public class HttpClientHandler extends SimpleChannelHandler  {
+public class HttpClientHandler extends SimpleChannelInboundHandler  {
 
 	//private BlockingQueue<HttpClientRequest> requestQueue = new LinkedBlockingDeque<HttpClientRequest>();
 
