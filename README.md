@@ -19,8 +19,3 @@ mvn demo clean package assembly:single -Dmaven.test.skip=true
 https://gitee.com/52itstyle/spring-boot-blog/tree/master 
 
 
-为什么会出现spring-boot，以及是如何实现的？
-你可以自己写一个类实现WebApplicationInitializer，来启动一个spring mvc容器，里面会调用DispatcherServlet
-基于spi机制在servlet3.0之后javaee提出了一个很nb的规范，
-那就是如果你的项目里的resource文件夹下面有个META-INF/services/javaxServletContainerinItializer文件里写了一个实现了ServletContainerInitializer的实现类，
-那么容器在启动的时候必须调用onStartup方法，如果你的类上面加了@HandlesTypes注解WebApplicationInitializer接口的实现类,这样spring就完美解决了容器的启动方式。

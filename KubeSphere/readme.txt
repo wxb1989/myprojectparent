@@ -1,0 +1,1 @@
+https://kubesphere.com.cn/docs/v2.1/zh-CN/installation/all-in-one/
