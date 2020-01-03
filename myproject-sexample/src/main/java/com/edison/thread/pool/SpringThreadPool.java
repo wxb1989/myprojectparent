@@ -47,7 +47,8 @@ public class SpringThreadPool {
         taskExecutor.shutdown();*/
 
         /*
-        cpu 密集型任务 ThreadPoolExecutor其实是cpu密集型任务
+        2使用java原生的创建方式
+        cpu 密集型任务 java原生ThreadPoolExecutor其实是cpu密集型任务
         io 密集型任务  tomcat和netty拓展的ThreadPool是io型密集任务
         上述扩展方 法虽然看起不是很难，但是自己实现代价可能就比较大。若不想扩展线程池运行 io 密集型任务，
         可以采用下面这种折衷方法。
@@ -68,7 +69,7 @@ public class SpringThreadPool {
 
         */
         int poolSize=Runtime.getRuntime().availableProcessors()*2;
-        //2使用java原生的创建方式
+
         ExecutorService executorService = new ThreadPoolExecutor(10, poolSize, 0L,
                 TimeUnit.SECONDS,
                 new LinkedBlockingQueue<>(100),
