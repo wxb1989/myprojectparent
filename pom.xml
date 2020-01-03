@@ -11,6 +11,7 @@
     <modules>
         <module>myproject-sexample</module>
         <module>netty-project</module>
+        <module>spring-al</module>
     </modules>
     <properties>
         <spring-version>5.1.4.RELEASE</spring-version>
@@ -18,7 +19,6 @@
     </properties>
     <dependencyManagement>
         <dependencies>
-
             <!-- 添加Spring5.1.4的核心包 -->
             <dependency>
                 <groupId>org.springframework</groupId>
