@@ -18,4 +18,6 @@ mvn demo clean package assembly:single -Dmaven.test.skip=true
 
 https://gitee.com/52itstyle/spring-boot-blog/tree/master 
 
-技术博客：https://blog.51cto.com/14480698/p1
+#技术博客：
+https://blog.51cto.com/14480698/p1   .....
+https://www.jianshu.com/u/81cab6a91a0a
