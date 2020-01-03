@@ -1,5 +1,7 @@
 package com.edison.thread.pool;
 
+import com.google.common.util.concurrent.ThreadFactoryBuilder;
+
 import java.util.concurrent.*;
 
 /**
@@ -69,7 +71,7 @@ public class SpringThreadPool {
 
         */
         int poolSize=Runtime.getRuntime().availableProcessors()*2;
-
+        ThreadFactory defaultThreadFactory= new ThreadFactoryBuilder().setNameFormat("pool-task").build();
         ExecutorService executorService = new ThreadPoolExecutor(10, poolSize, 0L,
                 TimeUnit.SECONDS,
                 new LinkedBlockingQueue<>(100),
