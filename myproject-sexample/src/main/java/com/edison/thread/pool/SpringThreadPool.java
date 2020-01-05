@@ -72,10 +72,10 @@ public class SpringThreadPool {
         */
         int poolSize=Runtime.getRuntime().availableProcessors()*2;
         ThreadFactory defaultThreadFactory= new ThreadFactoryBuilder().setNameFormat("pool-task").build();
-        ExecutorService executorService = new ThreadPoolExecutor(10, poolSize, 0L,
+        ExecutorService executorService = new ThreadPoolExecutor(10, 10, 0L,
                 TimeUnit.SECONDS,
                 new LinkedBlockingQueue<>(100),
-                Executors.defaultThreadFactory(),
+                defaultThreadFactory,
                 new ThreadPoolExecutor.CallerRunsPolicy());
 
         for (int i = 0; i < 10; i++) {
