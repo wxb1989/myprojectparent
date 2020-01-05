@@ -33,8 +33,8 @@ spring:
 
 eureka:
   instance:
-    lease-renewal-interval-in-seconds: 10
-    lease-expiration-duration-in-seconds: 30
+    lease-renewal-interval-in-seconds: 1  # 心跳检测检测与续约时间
+    lease-expiration-duration-in-seconds: 3 # 测试时将值设置设置小些，保证服务关闭后注册中心能及时踢出服务
     instance-id: ${spring.cloud.client.ip-address}:${server.port}:${spring.application.name}
     prefer-ip-address: true
   client:
