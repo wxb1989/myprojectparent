@@ -13,6 +13,8 @@
         <module>netty-project</module>
         <module>spring-al</module>
         <module>hzero-all</module>
+        <module>demo</module>
+        <module>cloud</module>
     </modules>
     <properties>
         <spring-version>5.1.4.RELEASE</spring-version>
