@@ -11,6 +11,7 @@ import org.springframework.core.type.filter.AnnotationTypeFilter;
 import java.util.Set;
 
 /**
+ * 这个类没用到，因为用它好像扫描不到包下的类
  * @author wxb
  * @version V1.0
  * @Package com.configuration
