@@ -27,7 +27,7 @@ public class MapperMethod {
         // 有注解则处理注解中的参数
 
         // 此处只是简单的模拟一下
-        System.out.println("execute insert {" + mapperProxy.toString() + "} completed");
+        System.out.println("execute insert {" + args[0] + "} completed");
 
         /*final Annotation[] annotations = method.getAnnotations();
         for (Annotation annotation : annotations) {

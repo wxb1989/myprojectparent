@@ -4,5 +4,5 @@ import com.annotation.Mapper;
 
 @Mapper
 public interface TestInterface {
-    String hello();
+    String hello(String value);
 }
