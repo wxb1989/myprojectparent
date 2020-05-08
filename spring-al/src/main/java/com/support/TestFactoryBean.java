@@ -1,14 +1,8 @@
 package com.support;
 
-import com.proxy.TestUtilProxy;
-import com.service.TestInterface;
-import com.service.impl.TestInterfaceImpl;
+import com.proxy.MapperProxy;
 import org.springframework.beans.factory.FactoryBean;
 import org.springframework.beans.factory.InitializingBean;
-
-import java.lang.reflect.InvocationHandler;
-import java.lang.reflect.Method;
-import java.lang.reflect.Proxy;
 
 /**
  * @author wxb
@@ -19,6 +13,7 @@ import java.lang.reflect.Proxy;
 public class TestFactoryBean implements FactoryBean<Object>, InitializingBean {
 
     private Class<?> interfaceClass;
+
 
     @Override
     public Object getObject() throws Exception {
@@ -45,7 +40,7 @@ public class TestFactoryBean implements FactoryBean<Object>, InitializingBean {
      * 创建代理类，在代理类中执行真正的操作
      */
     private Object createProxy() {
-        return new TestUtilProxy().bind(interfaceClass);
+        return new MapperProxy().bind(interfaceClass);
     }
 
     public Class<?> getInterfaceClass() {

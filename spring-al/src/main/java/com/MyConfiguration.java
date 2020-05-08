@@ -1,13 +1,8 @@
 package com;
 
 import com.annotation.EnableTest;
-import com.annotation.TestUtil;
-import com.service.TestInterface;
-import com.service.impl.TestInterfaceImpl;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Import;
 
 /**
  * @author ${Administrator}

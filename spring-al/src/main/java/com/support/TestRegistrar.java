@@ -1,10 +1,9 @@
 package com.support;
 
-import com.annotation.TestUtil;
+import com.annotation.Mapper;
 import com.service.TestInterface;
 import org.springframework.beans.factory.annotation.AnnotatedBeanDefinition;
 import org.springframework.beans.factory.config.BeanDefinition;
-import org.springframework.beans.factory.config.BeanDefinitionHolder;
 import org.springframework.beans.factory.support.*;
 import org.springframework.context.EnvironmentAware;
 import org.springframework.context.ResourceLoaderAware;
@@ -15,6 +14,7 @@ import org.springframework.core.io.ResourceLoader;
 import org.springframework.core.type.AnnotationMetadata;
 import org.springframework.core.type.filter.AnnotationTypeFilter;
 import org.springframework.util.ClassUtils;
+import org.springframework.util.StringUtils;
 
 import java.util.Map;
 import java.util.Set;
@@ -46,31 +46,49 @@ public class TestRegistrar implements ImportBeanDefinitionRegistrar, ResourceLoa
     public void registerBeanDefinitions(AnnotationMetadata annotationMetadata, BeanDefinitionRegistry beanDefinitionRegistry) {
         ClassPathScanningCandidateComponentProvider scanner = getScanner();
         scanner.setResourceLoader(this.resourceLoader);
-
-        AnnotationTypeFilter annotationTypeFilter = new AnnotationTypeFilter(TestUtil.class);
+        //扫包扫到这个注解
+        AnnotationTypeFilter annotationTypeFilter = new AnnotationTypeFilter(Mapper.class);
         scanner.addIncludeFilter(annotationTypeFilter);
         String basePackage = ClassUtils.getPackageName(annotationMetadata.getClassName());
-        Set<BeanDefinition> candidateComponents  = scanner.findCandidateComponents(basePackage);
-        for (BeanDefinition  holder : candidateComponents ) {
+        //获取所有的类
+        Set<BeanDefinition> candidateComponents = scanner.findCandidateComponents(basePackage);
+        for (BeanDefinition holder : candidateComponents) {
             if (holder instanceof AnnotatedBeanDefinition) {
-                AnnotatedBeanDefinition beanDefinition = (AnnotatedBeanDefinition) holder;
-                AnnotationMetadata annotationMeta = beanDefinition.getMetadata();
-                Map<String, Object> attributes = annotationMeta.getAnnotationAttributes(TestInterface.class.getCanonicalName());
-                //注册自己beanDefinition
-                registerTestUtil(beanDefinitionRegistry, annotationMeta);
+                try {
+                    //根据包路径转换成class对象
+                    AnnotatedBeanDefinition beanDefinition = (AnnotatedBeanDefinition) holder;
+                    Class clz=Class.forName(beanDefinition.getBeanClassName());
+                    //获取类名，并且转成首字母小写
+                    String interfaceClassName=toLowerCaseFirstOne(ClassUtils.getShortName(beanDefinition.getBeanClassName()));
+                    AnnotationMetadata annotationMeta = beanDefinition.getMetadata();
+                    Map<String, Object> attributes = annotationMeta.getAnnotationAttributes(clz.getCanonicalName());
+                    //注册自己beanDefinition
+                    registerTestUtil(beanDefinitionRegistry, clz,interfaceClassName,annotationMeta);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         }
     }
-    private void registerTestUtil(BeanDefinitionRegistry beanDefinitionRegistry, AnnotationMetadata annotationMetadata ) {
-        Class<?> cls = TestInterface.class;
+
+
+
+    private void registerTestUtil(BeanDefinitionRegistry beanDefinitionRegistry, Class cls,String className ,AnnotationMetadata annotationMeta) {
         BeanDefinitionBuilder builder = BeanDefinitionBuilder.genericBeanDefinition(cls);
         GenericBeanDefinition definition = (GenericBeanDefinition) builder.getRawBeanDefinition();
         definition.getPropertyValues().add("interfaceClass", definition.getBeanClassName());
         definition.setBeanClass(TestFactoryBean.class);
         definition.setAutowireMode(GenericBeanDefinition.AUTOWIRE_BY_TYPE);
         // 注册bean名,一般为类名首字母小写
-        beanDefinitionRegistry.registerBeanDefinition("testInterface", definition);
+        beanDefinitionRegistry.registerBeanDefinition(className, definition);
 
+    }
+
+    private static String toLowerCaseFirstOne(String s){
+        if(Character.isLowerCase(s.charAt(0)))
+            return s;
+        else
+            return (new StringBuilder()).append(Character.toLowerCase(s.charAt(0))).append(s.substring(1)).toString();
     }
 
     protected ClassPathScanningCandidateComponentProvider getScanner() {

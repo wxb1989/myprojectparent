@@ -1,6 +1,6 @@
 package com.support;
 
-import com.annotation.TestUtil;
+import com.annotation.Mapper;
 import org.springframework.beans.factory.config.BeanDefinitionHolder;
 import org.springframework.beans.factory.support.BeanDefinitionRegistry;
 import org.springframework.context.annotation.ClassPathBeanDefinitionScanner;
@@ -36,7 +36,7 @@ public class MyTestUtilClassPathBeanDefinitionScanner extends ClassPathBeanDefin
     }
 
     protected void registerFilters() {
-        addIncludeFilter(new AnnotationTypeFilter(TestUtil.class));
+        addIncludeFilter(new AnnotationTypeFilter(Mapper.class));
     }
     @Override
     protected Set<BeanDefinitionHolder> doScan(String... basePackages) {
