@@ -1,15 +1,15 @@
 package com.service.impl;
 
-import com.service.TestInferface;
+import com.service.TestInterface;
 import org.springframework.beans.factory.InitializingBean;
 
 /**
  *
  */
-public class TestInferfaceImpl implements TestInferface, InitializingBean {
+public class TestInterfaceImpl implements TestInterface, InitializingBean {
     private String hello = "hello";
 
-    public TestInferfaceImpl(){
+    public TestInterfaceImpl(){
         System.out.println("hello in contructor:" + hello);
     }
 
