@@ -1,12 +1,8 @@
-package com.configuration;
+package com.support;
 
-import com.service.TestInferface;
 import org.springframework.beans.BeansException;
-import org.springframework.beans.MutablePropertyValues;
-import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.beans.factory.config.BeanFactoryPostProcessor;
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
-import org.springframework.util.ClassUtils;
 
 /**
  * 这个描述比较清楚了，BeanFactoryPostProcessor可以在容器初始化创建bean之前读他们的元数据信息并能够修改它。
@@ -20,8 +16,9 @@ import org.springframework.util.ClassUtils;
 public class MyBeanFactoryPostProcessor implements BeanFactoryPostProcessor {
     @Override
     public void postProcessBeanFactory(ConfigurableListableBeanFactory configurableListableBeanFactory) throws BeansException {
-        BeanDefinition beanDefinition = configurableListableBeanFactory.getBeanDefinition(ClassUtils.getShortName(TestInferface.class));
+        //可以在这里获取已经注册到BeanFactory里的类，然后去操作他们
+      /*  BeanDefinition beanDefinition = configurableListableBeanFactory.getBeanDefinition(ClassUtils.getShortName(TestInterface.class));
         MutablePropertyValues mpv = beanDefinition.getPropertyValues();
-        mpv.add("hello", "hello world");
+        mpv.add("hello", "hello world");*/
     }
 }

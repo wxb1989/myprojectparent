@@ -1,5 +1,5 @@
-package com.configuration;
-import com.service.TestInferface;
+package com.support;
+import com.service.TestInterface;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanClassLoaderAware;
 import org.springframework.beans.factory.config.BeanPostProcessor;
@@ -23,7 +23,7 @@ public class MyBeanPostProcessor implements BeanPostProcessor, BeanClassLoaderAw
 
     @Override
     public Object postProcessBeforeInitialization(Object bean, String name) throws BeansException {
-        if(bean instanceof TestInferface){
+        if(bean instanceof TestInterface){
             System.out.println("invoke before initialization");
         }
         return bean;
@@ -31,9 +31,9 @@ public class MyBeanPostProcessor implements BeanPostProcessor, BeanClassLoaderAw
 
     @Override
     public Object postProcessAfterInitialization(final Object bean, String name) throws BeansException {
-        if(bean instanceof TestInferface){
+        if(bean instanceof TestInterface){
             System.out.println("invoke after initialization");
-            TestInferface newProxy = (TestInferface) Proxy.newProxyInstance(classLoader, new Class[]{TestInferface.class}, new InvocationHandler() {
+            TestInterface newProxy = (TestInterface) Proxy.newProxyInstance(classLoader, new Class[]{TestInterface.class}, new InvocationHandler() {
                 @Override
                 public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
                     System.out.println("before invoke");

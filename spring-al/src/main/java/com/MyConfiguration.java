@@ -1,9 +1,8 @@
-package com.configuration;
+package com;
 
+import com.annotation.EnableTest;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Import;
 
 /**
  * @author ${Administrator}
@@ -12,14 +11,14 @@ import org.springframework.context.annotation.Import;
  * @create 2018-11-07 15:17
  **/
 @Configuration
-@ComponentScan("com.*")
-@Import(MyImportRegistrator.class)
+@EnableTest
 public class MyConfiguration {
 
     @Bean
     public String my() {
         return "aaa";
     }
+
 
 
 }
