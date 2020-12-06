@@ -360,7 +360,7 @@
             <dependency>
                 <groupId>org.reflections</groupId>
                 <artifactId>reflections</artifactId>
-                <version>0.9.11</version>
+                <version>0.9.12</version>
             </dependency>
 
 <!--            netty 和 消息序列化lib-->
